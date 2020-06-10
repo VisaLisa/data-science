@@ -1,6 +1,3 @@
 import streamlit as st
-
-st.write("Hello World")
-###SLIDER example
-x = st.slider('x')
-st.write(x, 'squared is', x * x)
+import pandas as pd 
+import numpy
