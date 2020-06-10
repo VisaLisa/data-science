@@ -70,3 +70,22 @@ st.write(pdk.Deck(
 if st.checkbox('Show Raw Data'):
     '## Raw Data at %sh' % hour, data
 
+st.subheader("Breakdown by minute between %i:00 and %i:00" % (hour, (hour + 1) % 24))
+filtered = data[
+    (data[DATE_TIME].dt.hour >= hour) & (data[DATE_TIME].dt.hour < (hour + 1))
+]
+hist = np.histogram(filtered[DATE_TIME].dt.minute, bins=60, range=(0, 60))[0]
+chart_data = pd.DataFrame({"minute": range(60), "pickups": hist})
+
+st.altair_chart(alt.Chart(chart_data)
+    .mark_area(
+        interpolate='step-after',
+    ).encode(
+        x=alt.X("minute:Q", scale=alt.Scale(nice=False)),
+        y=alt.Y("pickups:Q"),
+        tooltip=['minute', 'pickups']
+    ), use_container_width=True)
+
+if st.checkbox("Show raw data", False):
+    st.subheader("Raw data by minute between %i:00 and %i:00" % (hour, (hour + 1) % 24))
+    st.write(data)
