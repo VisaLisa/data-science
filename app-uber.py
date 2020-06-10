@@ -1,6 +1,7 @@
 ### Used 'Build your first app' link: https://youtu.be/VtrFjkSGgKM  
 ### Create an app to explore a dataset of Uber ride pickups in New York City. 
 ### You’ll learn about caching, drawing charts, plotting data on a map, and how to use interactive widgets.
+### See https://github.com/streamlit/demo-uber-nyc-pickups/blob/master/app.py for the original code
 
 import streamlit as st
 import pandas as pd
