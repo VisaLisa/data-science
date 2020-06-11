@@ -8,3 +8,6 @@ DATA_URL = (
 st.title("Motor Vehicle Collisions in New York City")
 st.markdown("This application is a Steamlit dashboard that can be used"
 " to analyze motor vehicle collisions in NYC")
+
+def load_data(nrows):
+    data = pd.read_csv(DATA_URL)
